@@ -20,7 +20,7 @@ $ResultsFile = "$env:USERPROFILE\Desktop\GetSystemDataResults.txt"
 $ResultsFileExists = Test-Path $ResultsFile
 If ($ResultsFileExists -eq $True) {
     $OneWeek = (Get-Date).AddDays(-7)
-    $LastWritten = (Get-Item $ResultsFile).LastWriteTime
+    $LastWritten = (Get-Item -Path $ResultsFile -Force).LastWriteTime
     If ($LastWritten -ge $OneWeek) {
         Write-Host "We found a recent output file."
         Write-Host "Loading your recent script results."
